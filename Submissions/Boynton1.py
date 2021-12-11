@@ -5,4 +5,4 @@ testDataSheet = "Boynton1"
 # Specify the location for adding screenshots on errors
 ScreenShotsDir = 'C:\ScreenShots'
 
-exec(open("SmokeTest.py").read())
+exec(open("../SmokeTest.py").read())

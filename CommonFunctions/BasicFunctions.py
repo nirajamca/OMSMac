@@ -145,3 +145,7 @@ def fncGetFinalPremiumFromRater(uHREF):
     # return ExFinalPremium, ExSurplusLinesStateTax
 
     return ExFinalPremium
+
+# __________________________________________________________________________
+# Checking GitHub Process
+# __________________________________________________________________________
