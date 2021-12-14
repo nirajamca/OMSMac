@@ -67,3 +67,36 @@ def fncGetStateRangeAllowed(uRangeState):
     for i in range(4, 54):
         if (sheet.cell(row=i, column=1).value == uRangeState):
             return sheet.cell(i, 2).value
+
+# *******************************************************************************************************************************
+def fncCheckIfFileExists(uFilename):
+    import os
+    from openpyxl import Workbook
+    if os.path.isfile(uFilename) and os.access(uFilename, os.R_OK):
+        print("File exists and is readable, can proceed adding values")
+    else:
+        print("Either the file is missing or not readable, creating now")
+        wb = Workbook()
+        sheet = wb.active
+        sheet.title = 'CaptureValuesFromOMS'
+        sheet['A1'] = 'Item'
+        sheet['B1'] = 'Value'
+
+        wb.save(uFilename)
+        wb.close()
+
+def fncAddDataToGLBaseFile(uFilename, uData, uValue):
+    import openpyxl
+
+    fncCheckIfFileExists(uFilename)
+
+    wb = openpyxl.open(uFilename)
+    sheet = wb.active
+
+    xrow = sheet.max_row + 1
+
+    sheet.cell(row=xrow, column=1).value = uData
+    sheet.cell(row=xrow, column=2).value = uValue
+
+    wb.save(uFilename)
+    wb.close()

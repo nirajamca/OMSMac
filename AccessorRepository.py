@@ -171,3 +171,24 @@ idbtnQSaveandPrice = 'ctl00__MainContent_uc_QuoteWrapper_QuotationControl_cmdSav
 
 idlblQPremium = 'ctl00__MainContent_uc_QuoteWrapper_QuotationControl_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl04_lblpremium'
 xPathlnkQRaterFile = '//*[@id="ctl00__MainContent_uc_QuoteWrapper_QuotationControl_anchorSpreadsheetVIEW"]'
+
+# Policies Tab
+xPathlnkPolicies = '//*[@id="ctl00_ucLeftMenu_rptMainMenu_ctl03_lbLeftMenuItem"]'
+xPathlblPPolicyNumber = '//*[@id="ctl00__MainContent_ucSearchCtrl_pnlSearch"]/table/tbody/tr/td/div[1]/table/tbody/tr[1]/td[1]/span'
+idtxtPPolicyNumber = 'ctl00__MainContent_ucSearchCtrl__sc_PolicyNumberWithSuffix'
+xPathbtnPRunSearch = '//*[@id="ctl00__MainContent_ucSearchCtrl_btnSearch_input"]'
+xPathlblPSummaryText = '//*[@id="ctl00__MainContent_lbSummaryText"]'
+xPathtxtPDisabledPolicyNumber = '//*[@id="ctl00__MainContent_ucDataCtrl__dc_policy_number"]'
+xPathtxtPDisabledCommission = '//*[@id="ctl00__MainContent_ucDataCtrl__dc_received_commission"]'
+
+xPathtxtPLimitOfLiability = '//*[@id="ctl00__MainContent_uc_Oms_Quotations_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl04_lblpremium"]'
+xPathtxtPSurplusLinesStateTax = '//*[@id="ctl00__MainContent_uc_Oms_Quotations_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl08_lblpremium"]'
+xPathtxtPStampingFee = '//*[@id="ctl00__MainContent_uc_Oms_Quotations_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl10_lblpremium"]'
+xPathtxtPOtherStateFee = '//*[@id="ctl00__MainContent_uc_Oms_Quotations_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl12_lblpremium"]'
+xPathtxtPProcessingFee = '//*[@id="ctl00__MainContent_uc_Oms_Quotations_rptrPolicyLobs_ctl01_gvDefineLevel2_ctl00_ctl14_lblpremium"]'
+
+xPathlnkAnalyticReports = '//*[@id="ctl00_ucLeftMenu_rptMainMenu_ctl11_lbLeftMenuItem"]/span'
+xPathSectionHeaderARReports = '//*[@id="ctl00__MainContent_pnlDynamicUserControl"]/div/div/div[1]/div[1]'
+xPathlnkARGeneral = '//*[@id="ctl00__MainContent_uc_AnalyticDashboard_rptReport_ctl02_lnkReport"]'
+xPathlnkARGLTransactionReport = '//*[@id="ctl00__MainContent_uc_AnalyticDashboard_rptReport_ctl02_rptSubreport_ctl02_lnkSubreportName"]'
+xPathHeaderARGLTransactionReport = '//*[@id="rptName"]'
