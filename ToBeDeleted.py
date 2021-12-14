@@ -22,7 +22,7 @@
 # uState = 'Massachusetts'
 from CommonFunctions import BasicFunctions as BF
 
-uHREF = 'https://qa2.oms.oneshield.com/blob?fn=qnaconskff31293701.xlsm'
+# uHREF = 'https://qa2.oms.oneshield.com/blob?fn=qnaconskff31293701.xlsm'
 
 # def fncGetFinalPremiumFromRater(uHREF):
 #     import xlrd
@@ -43,4 +43,10 @@ uHREF = 'https://qa2.oms.oneshield.com/blob?fn=qnaconskff31293701.xlsm'
 #
 #     return locale.currency( uFinalPremium, grouping = True )
 
-uHREF = WebDriverWait(self.myDriver, 10).until(EC.visibility_of_element_located((By.XPATH, self.AR.xPathlnkQRaterFile))).get_attribute('href')
+
+
+
+import CommonFunctions.OneShieldFunctions as OSF
+# fncCheckIfFileExists('GLBaseFile.xlsx')
+# OSF.fncAddDataToGLBaseFile('GLBaseFile.xlsx','Commission', '50.00')
+OSF.fncAddDataToGLBaseFile('GLBaseFile.xlsx','ProcessingFee', '250.00')
