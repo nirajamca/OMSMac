@@ -192,3 +192,10 @@ xPathSectionHeaderARReports = '//*[@id="ctl00__MainContent_pnlDynamicUserControl
 xPathlnkARGeneral = '//*[@id="ctl00__MainContent_uc_AnalyticDashboard_rptReport_ctl02_lnkReport"]'
 xPathlnkARGLTransactionReport = '//*[@id="ctl00__MainContent_uc_AnalyticDashboard_rptReport_ctl02_rptSubreport_ctl02_lnkSubreportName"]'
 xPathHeaderARGLTransactionReport = '//*[@id="rptName"]'
+
+xPathtxtARGLTransactionDateFrom = '//*[@id="ucDataCtrl__dc_date_3_dateInput"]'
+xPathtxtARGLTrasactionDateTo = '//*[@id="ucDataCtrl__dc_date_4_dateInput"]'
+xPathrdoARGLReportFormatExcel = '//*[@id="rdOutputType"]/tbody/tr/td[2]/label'
+xPathbtnARGLRunReport = '//*[@id="btnrunReport_input"]'
+xPathlblARGLReportGenerated = '//*[@id="messagelist"]'
+xPathlnkARGLView = '//*[@id="hlViewStdReport"]'
