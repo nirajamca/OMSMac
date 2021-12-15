@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from datetime import date, timedelta
+import xlrd
+import locale
 import time
 import unittest
 import HtmlTestRunner
@@ -61,15 +63,66 @@ try:
                             glreport_window_handle = handle
                             break
                 self.myDriver.switch_to_window(glreport_window_handle)
-                time.sleep(5)
+                time.sleep(2)
 
                 # Verify if the Reports section available
                 self.assertEqual(self.myDriver.find_element_by_xpath(self.AR.xPathHeaderARGLTransactionReport).text, "GL transaction report")
 
-                self.myDriver.close()
+                # Create GL Report
+                # Get today's date in the required format
+                uTrToDate = date.today().strftime("%m/%d/%Y")
 
-                # switch the handle back to main window
-                self.myDriver.switch_to_window(main_window_handle)
+                uTrFromDate = date.today() + timedelta(-10)
+                uTrFromDate = uTrFromDate.strftime("%m/%d/%Y")
+
+                # Enter transaction from date
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathtxtARGLTransactionDateFrom))).clear()
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathtxtARGLTransactionDateFrom))).send_keys(uTrFromDate)
+                time.sleep(3)
+
+                # Enter transaction to date
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathtxtARGLTrasactionDateTo))).clear()
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathtxtARGLTrasactionDateTo))).send_keys(uTrToDate)
+                time.sleep(3)
+
+                # Select report type as Excel
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathrdoARGLReportFormatExcel))).click()
+                time.sleep(1)
+
+                # Click Run Report
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathbtnARGLRunReport))).click()
+                time.sleep(3)
+
+                # Verify if the report is generated successfully
+                self.assertEqual(self.myDriver.find_element_by_xpath(self.AR.xPathlblARGLReportGenerated).text, 'Report has been generated, click on the View link to open it')
+                self.assertEqual(self.myDriver.find_element_by_xpath(self.AR.xPathlnkARGLView).text, 'View')
+
+                uHREF = WebDriverWait(self.myDriver, 10).until(EC.visibility_of_element_located((By.XPATH, self.AR.xPathlnkARGLView))).get_attribute('href')
+
+                # Click View to download the General Ledger Report in Excel Format
+                WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathlnkARGLView))).click()
+                time.sleep(3)
+
+                print(uHREF)
+
+                uGLTrReport = uHREF.split('=')[2]
+                uGLTrReportLocal = 'C:\\Users\\niraj\\Downloads\\' + uGLTrReport
+
+                # Create workbook object and capture the active sheet
+                wb = xlrd.open_workbook(uGLTrReportLocal)
+
+                # Designate the actual sheetname
+                sheet = wb.sheet_by_name('Sheet1')
+                locale.setlocale(locale.LC_ALL, 'English_United States.1252')
+
+                # Get Final Adjustment Premium
+                # uFinalPremium = sheet.cell(rowx=34, colx=1).value
+                print(sheet.cell(rowx=5, colx=6).value)
+
+                # self.myDriver.close()
+                #
+                # # switch the handle back to main window
+                # self.myDriver.switch_to_window(main_window_handle)
 
             except Exception as e73:
                 print(self.BF.fncCaptureScreenshot(self.myDriver, self.ScreenShotsDir, 'LaunchGLTransactionReportPage'))

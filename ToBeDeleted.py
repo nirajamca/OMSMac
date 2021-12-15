@@ -42,11 +42,18 @@ from CommonFunctions import BasicFunctions as BF
 #     locale.setlocale( locale.LC_ALL, 'English_United States.1252' )
 #
 #     return locale.currency( uFinalPremium, grouping = True )
+import xlrd
+import locale
 
+uGLTrReportLocal = 'C:\\Users\\niraj\\Downloads\\04220slod1442200_1215210414048917.xls'
 
+# Create workbook object and capture the active sheet
+wb = xlrd.open_workbook(uGLTrReportLocal)
 
+# Designate the actual sheetname
+sheet = wb.sheet_by_name('Sheet1')
+# locale.setlocale(locale.LC_ALL, 'English_United States.1252')
 
-import CommonFunctions.OneShieldFunctions as OSF
-# fncCheckIfFileExists('GLBaseFile.xlsx')
-# OSF.fncAddDataToGLBaseFile('GLBaseFile.xlsx','Commission', '50.00')
-OSF.fncAddDataToGLBaseFile('GLBaseFile.xlsx','ProcessingFee', '250.00')
+# Get Final Adjustment Premium
+# uFinalPremium = sheet.cell(rowx=34, colx=1).value
+print(sheet.cell(rowx=2, colx=2).value)
