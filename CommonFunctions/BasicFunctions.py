@@ -1,8 +1,11 @@
 def fncGetMyDriver():
     from selenium import webdriver
+    import chromedriver_autoinstaller
 
     # Create and object for Chrome WebDriver
-    myDriver = webdriver.Chrome(executable_path='C:\Drivers\chromedriver.exe')
+    # myDriver = webdriver.Chrome(executable_path='C:\Drivers\chromedriver.exe')
+    chromedriver_autoinstaller.install()
+    myDriver = webdriver.Chrome()
     myDriver.implicitly_wait(2)
     myDriver.maximize_window()
 
@@ -68,26 +71,54 @@ def fncCaptureScreenshot(myDriver, testResultsDir, uFilename):
 #     return getValues
 
 # ===============================================================================
+# def fncGetValues(loc, sheetName, testCase):
+#     # import openpyxl module to use excel operations
+#     import xlrd
+#
+#     # Create workbook object and capture the active sheet
+#     wb = xlrd.open_workbook(loc)
+#
+#     # Designate the actual sheetname
+#     sheet = wb.sheet_by_name(sheetName)
+#
+#     # Leaving the header row, go through each line to find a match with test case you want to execute
+#     for i in range(1, sheet.utter_max_rows):
+#         if (sheet.cell(rowx=i, colx=0).value == testCase):
+#
+#             # if the matching test case is found, create a dictionary with data in second column
+#             getValues = {sheet.cell(rowx=0, colx=1).value: sheet.cell(rowx=i, colx=1).value}
+#
+#             # Once the data dictionary is added, keep on adding rest of the items in that row till the end of columns
+#             for j in range(2, sheet.ncols):
+#                 getValues.update({sheet.cell(rowx=0, colx=j).value: sheet.cell(rowx=i, colx=j).value})
+#
+#             break
+#
+#     # Return the dictionary
+#     return getValues
+
 def fncGetValues(loc, sheetName, testCase):
     # import openpyxl module to use excel operations
-    import xlrd
+    import openpyxl
+    from openpyxl import load_workbook
 
     # Create workbook object and capture the active sheet
-    wb = xlrd.open_workbook(loc)
+    wb = load_workbook(loc, data_only=True)
+    sheet = wb.active
 
     # Designate the actual sheetname
-    sheet = wb.sheet_by_name(sheetName)
+    sheet = wb[sheetName]
 
     # Leaving the header row, go through each line to find a match with test case you want to execute
-    for i in range(1, sheet.utter_max_rows):
-        if (sheet.cell(rowx=i, colx=0).value == testCase):
+    for i in range(2, sheet.max_row + 1):
+        if (sheet.cell(row=i, column=1).value == testCase):
 
             # if the matching test case is found, create a dictionary with data in second column
-            getValues = {sheet.cell(rowx=0, colx=1).value: sheet.cell(rowx=i, colx=1).value}
+            getValues = {sheet.cell(row=1, column=2).value: sheet.cell(row=i, column=2).value}
 
             # Once the data dictionary is added, keep on adding rest of the items in that row till the end of columns
-            for j in range(2, sheet.ncols):
-                getValues.update({sheet.cell(rowx=0, colx=j).value: sheet.cell(rowx=i, colx=j).value})
+            for j in range(3, sheet.max_column + 1):
+                getValues.update({sheet.cell(row=1, column=j).value: sheet.cell(row=i, column=j).value})
 
             break
 

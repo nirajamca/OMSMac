@@ -1,8 +1,8 @@
 # Specify the location of test data file and the sheet name to read from
-testDataLoc = "Submissions\TestData.xlsx"
+testDataLoc = "TestData.xlsx"
 testDataSheet = "Ford1"
 
 # Specify the location for adding screenshots on errors
 ScreenShotsDir = 'C:\ScreenShots'
 
-exec(open("SmokeTest.py").read())
+exec(open("..\SmokeTest.py").read())
