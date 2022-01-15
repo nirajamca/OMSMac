@@ -59,7 +59,7 @@ def fncAddUnderLyingPolicyCoverage(myDriver, uLayerNumber, uPolicyType, uCarrier
 # *******************************************************************************************************************************
 def fncGetStateRangeAllowed(uRangeState):
     import openpyxl
-    loc = 'Submissions\State List of Range states vs Non Range states.xlsx'
+    loc = 'State List of Range states vs Non Range states.xlsx'
     wb = openpyxl.load_workbook(loc)
     sheet = wb['Sheet1']
 
