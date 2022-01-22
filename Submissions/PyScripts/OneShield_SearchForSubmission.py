@@ -17,8 +17,10 @@ try:
         import AccessorRepository as AR
 
         uSubmission = myData['Option2']
+        uSubmissionSuffix = myData['Option5']
         uChangeState = myData['Option3']
         uRangeState = myData['Option4']
+
 
         myDriver = myDriver
         ScreenShotsDir = ScreenShotsDir
@@ -31,6 +33,12 @@ try:
 
                 WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.ID, self.AR.idtxtSubmissionSearchSubNumber))).send_keys(self.uSubmission)
                 time.sleep(3)
+
+                if self.uSubmissionSuffix == None:
+                    y = 1
+                else:
+                    WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.ID, self.AR.idtxtSubmissionSearchSubSuffix))).send_keys(self.uSubmissionSuffix)
+                    time.sleep(3)
 
                 WebDriverWait(self.myDriver, 10).until(EC.element_to_be_clickable((By.XPATH, self.AR.xPathbtnSubmissionsRunSearch))).click()
                 time.sleep(5)
