@@ -36,6 +36,7 @@ idtxtNSSubmissionNumber = 'ctl00__MainContent_ucDataCtrl__dc_submission_number'
 # Submissions
 xPathMenuSubmissions = '//*[@id="ctl00_ucLeftMenu_rptMainMenu_ctl02_lbLeftMenuItem"]/span'
 idtxtSubmissionSearchSubNumber = 'ctl00__MainContent_ucSearchCtrl__sc_submission_number'
+idtxtSubmissionSearchSubSuffix = 'ctl00__MainContent_ucSearchCtrl__sc_submissions_suffix'
 xPathbtnSubmissionsRunSearch = '//*[@id="ctl00__MainContent_ucSearchCtrl_btnSearch_input"]'
 xPathtrSubmissionsFirstRow = '//*[@id="ctl00__MainContent_ucSearchCtrl_gvResults"]/tbody/tr[2]'
 
