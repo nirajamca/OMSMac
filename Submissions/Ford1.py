@@ -3,6 +3,6 @@ testDataLoc = "TestData.xlsx"
 testDataSheet = "Ford1"
 
 # Specify the location for adding screenshots on errors
-ScreenShotsDir = 'C:\ScreenShots'
+ScreenShotsDir = '../Screenshots'
 
-exec(open("..\SmokeTest.py").read())
+exec(open("../SmokeTest.py").read())
