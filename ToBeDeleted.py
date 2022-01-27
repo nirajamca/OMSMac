@@ -1,8 +1,27 @@
-from openpyxl import load_workbook
+from selenium import webdriver
+import chromedriver_autoinstaller
+import time
 
-wb = load_workbook("C:\\Users\\niraj\\PycharmProjects\\Falcon\\Submissions\\TestData.xlsx", data_only=True)
-sh = wb["Ford1"]
-print(sh["G5"].value)
+# Call this module to verify if it has latest version of
+# Chrome webdriver, if not, get latest
+chromedriver_autoinstaller.install()
+myDriver = webdriver.Chrome()
+myDriver.maximize_window()
+
+# Launch URL to open the desired website
+myDriver.get("https://qa1.oms.oneshield.com/")
+time.sleep(5)
+
+# Close window when done
+myDriver.close()
+
+
+
+# from openpyxl import load_workbook
+#
+# wb = load_workbook("C:\\Users\\niraj\\PycharmProjects\\Falcon\\Submissions\\TestData.xlsx", data_only=True)
+# sh = wb["Ford1"]
+# print(sh["G5"].value)
 
 
 # import openpyxl

@@ -36,7 +36,7 @@ def fncCaptureScreenshot(myDriver, testResultsDir, uFilename):
 
     # Capture current date/time to log in the test results
     currentDateTime = datetime.now().strftime("_%m-%d-%Y_%H-%M-%S")
-    imgFilename = testResultsDir + "\\" + uFilename + "" + currentDateTime + ".png"
+    imgFilename = testResultsDir + "/" + uFilename + "" + currentDateTime + ".png"
     myDriver.save_screenshot(imgFilename)
 
     return imgFilename
